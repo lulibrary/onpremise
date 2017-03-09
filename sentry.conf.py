@@ -33,6 +33,7 @@
 #  GITHUB_API_SECRET
 #  BITBUCKET_CONSUMER_KEY
 #  BITBUCKET_CONSUMER_SECRET
+#  SENTRY_ALLOW_REGISTRATION
 from sentry.conf.server import *  # NOQA
 from sentry.utils.types import Bool
 
@@ -306,3 +307,6 @@ if 'GITHUB_APP_ID' in os.environ:
 if 'BITBUCKET_CONSUMER_KEY' in os.environ:
     BITBUCKET_CONSUMER_KEY = env('BITBUCKET_CONSUMER_KEY')
     BITBUCKET_CONSUMER_SECRET = env('BITBUCKET_CONSUMER_SECRET')
+
+# Allow users to register with sentry
+SENTRY_FEATURES['auth:register'] = env('SENTRY_ALLOW_REGISTRATION', False)
